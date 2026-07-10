@@ -14,3 +14,8 @@ class DataExtractor:
         no_duplicates = no_empty_cells.drop_duplicates()
 
         return no_duplicates
+    
+    def hot_one_encode(self, df: pd.DataFrame, columns: list[str]) -> pd.DataFrame:
+        encoded_df = pd.get_dummies(df, columns=columns, dtype=int)
+
+        return encoded_df

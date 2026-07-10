@@ -13,6 +13,9 @@ The dataset used for this project is **not** included in this repository.
 * **Size:** 690 rows, 16 features
 * **Target Variable:** `Approved` (Binary: 0 = Denied, 1 = Approved)
 
+## Models
+This project uses a random forest classifier as its model. This was chosen due to the relatively small dataset used (< 1000 rows) to avoid overfitting.
+
 ### Setup and Usage:
 1. Clone the repository.
 2. Download the `clean_dataset.csv` from the source link above.
