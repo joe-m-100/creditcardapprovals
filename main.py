@@ -17,7 +17,7 @@ def run():
     encoded_data = de.hot_one_encode(clean_data, ['Industry', 'Ethnicity', 'Citizen']) 
     print('One-Hot Encoded non-numerical fields.')
 
-    print('Create Model')
+    print('Creating Model')
     create_model(encoded_data)
 
 
