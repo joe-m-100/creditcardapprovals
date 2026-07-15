@@ -28,6 +28,15 @@ Due to the nature of the data being used, the aim of this project was to create 
 ## Results
 
 # Inital Results
+These are the results from the first iteration of the model. There has been no parameter tuning performed yet, these results are to solely act as a baseline going forward.
+
 * **Accuracy:** 86.232%
 * **Precision:** 81.481%
 * **Recall:** 83.019%
+
+# Iteration Two Results
+These are the results from the second iteration of the model. In an attempt to reduce model overfitting, a maximum depth per tree has been introduced alongside a minimum number of leaf nodes (tentatively set to 2 - default is 1). This has led to a marginal increase in model accuracy, and a tradeoff between precision and recall of roughly 4%. As precision is being prioritised for this model, this is seen as an improvement over the initial model.
+
+* **Accuracy:** 86.957%
+* **Precision:** 85.714%
+* **Recall:** 79.245%
