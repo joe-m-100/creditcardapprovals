@@ -11,8 +11,15 @@ def create_model(dataset: pd.DataFrame):
     X_train, X_test, y_train, y_test = create_train_test_datasets(dataset, test_size)
 
     # Create Random Forest Classifier
-    rfclassifier = RandomForestClassifier(n_estimators=185, random_state=15, ccp_alpha=0.0)
+    rfclassifier = RandomForestClassifier(
+        n_estimators=200,
+        random_state=15, 
+        min_samples_leaf=2,
+        max_depth=4
+    )
+
     rfclassifier.fit(X_train, y_train)
+    # print(rfclassifier.feature_names_in_)
 
     predictions = rfclassifier.predict(X_test)
 
