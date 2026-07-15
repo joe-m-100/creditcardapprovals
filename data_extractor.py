@@ -19,3 +19,11 @@ class DataExtractor:
         encoded_df = pd.get_dummies(df, columns=columns, dtype=int)
 
         return encoded_df
+    
+    def get_data_balance(self, df: pd.DataFrame, column_name: str) -> tuple[int, int]:
+        filtered_df = df[df[column_name] == 1]
+
+        positive_rows = len(filtered_df)
+        negative_rows = len(df) - positive_rows
+
+        return (positive_rows, negative_rows)

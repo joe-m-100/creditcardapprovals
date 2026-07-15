@@ -12,12 +12,15 @@ def run():
     print('Raw data rows: ', len(raw_data))
     print('Clean data rows: ', len(clean_data))
 
+    pos, neg = de.get_data_balance(clean_data, 'Approved')
+    print(f'\nData Balance - {pos} positve cases, {neg} negative cases\n')
+
 
     # One-Hot encode all fields that are not numerical
     encoded_data = de.hot_one_encode(clean_data, ['Industry', 'Ethnicity', 'Citizen']) 
     print('One-Hot Encoded non-numerical fields.')
 
-    print('Creating Model')
+    print('Creating Model...')
     create_model(encoded_data)
 
 
