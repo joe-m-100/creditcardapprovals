@@ -12,7 +12,7 @@ def create_model(dataset: pd.DataFrame):
 
     # Create Random Forest Classifier
     rfclassifier = RandomForestClassifier(
-        n_estimators=200,
+        n_estimators=500,
         random_state=15, 
         min_samples_leaf=2,
         max_depth=4

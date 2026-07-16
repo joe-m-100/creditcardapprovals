@@ -40,3 +40,11 @@ These are the results from the second iteration of the model. In an attempt to r
 * **Accuracy:** 86.957%
 * **Precision:** 85.714%
 * **Recall:** 79.245%
+
+*By increasing the number of trees from 200 to 500, accuracy increased by ~1% and precision increased by ~2%.*
+
+*Model V2.1 results displayed below:*
+
+* **Accuracy:** 87.681%
+* **Precision:** 87.500%
+* **Recall:** 79.245%
