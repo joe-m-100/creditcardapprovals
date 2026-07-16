@@ -34,7 +34,7 @@ These are the results from the first iteration of the model. There has been no p
 * **Precision:** 81.481%
 * **Recall:** 83.019%
 
-### Iteration Two Results
+### Iteration Two Results - Manual Hyperparameter Tuning
 These are the results from the second iteration of the model. In an attempt to reduce model overfitting, a maximum depth per tree has been introduced alongside a minimum number of leaf nodes (tentatively set to 2 - default is 1). This has led to a marginal increase in model accuracy, and a tradeoff between precision and recall of roughly 4%. As precision is being prioritised for this model, this is seen as an improvement over the initial model.
 
 * **Accuracy:** 86.957%
@@ -48,3 +48,14 @@ These are the results from the second iteration of the model. In an attempt to r
 * **Accuracy:** 87.681%
 * **Precision:** 87.500%
 * **Recall:** 79.245%
+
+### Iteration Three Results - Hyperparameter Tuning using Cross Validation
+For the third iteration of the model, a more stuctured approach was taken to hyperparameter tuning. To begin the iteration, `RandomizedSearchCV` was used to identify the most important hyperparameters. A search was ran with 200 iterations, and a wide spread of values for hyperparameters `n_estimators`, `max_depth`, `min_samples_leaf`, `min_samples_split`, and `max_features`. It was found that shallower trees of `max_depth` were preferable. 
+
+As the running time for the search was not particularly long (< 5 mins), a more exhaustive search was performed using `GridSearchCV`. This concluded the following about the hyperparameters tested:
+
+* `n_estimators` - Held very little value as no real trends were found across its values.
+* `max_depth` - Shallower trees strongly correlate with better model performance. Tree depth greater than 10 reduces model accuracy significantly.
+* `min_samples_leaf` - Smaller values (<= 5) are heavily preferred by the top models. High values for this parameter also harms model performance.
+* `min_samples_split` - Very dependant on values of other hyperparameters. The best models used higher values for this hyperparameter (e.g. 20).
+* `max_features` - Using all features correlates with poor classifier performance. `log2` or `sqrt` greatly preferred.
