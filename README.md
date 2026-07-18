@@ -41,14 +41,6 @@ These are the results from the second iteration of the model. In an attempt to r
 * **Precision:** 85.714%
 * **Recall:** 79.245%
 
-*By increasing the number of trees from 200 to 500, accuracy increased by ~1% and precision increased by ~2%.*
-
-*Model V2.1 results displayed below:*
-
-* **Accuracy:** 87.681%
-* **Precision:** 87.500%
-* **Recall:** 79.245%
-
 ### Iteration Three Results - Hyperparameter Tuning using Cross Validation
 For the third iteration of the model, a more stuctured approach was taken to hyperparameter tuning. To begin the iteration, `RandomizedSearchCV` was used to identify the most important hyperparameters. A search was ran with 200 iterations, and a wide spread of values for hyperparameters `n_estimators`, `max_depth`, `min_samples_leaf`, `min_samples_split`, and `max_features`. It was found that shallower trees of `max_depth` were preferable. 
 
@@ -59,3 +51,7 @@ As the running time for the search was not particularly long (< 5 mins), a more 
 * `min_samples_leaf` - Smaller values (<= 5) are heavily preferred by the top models. High values for this parameter also harms model performance.
 * `min_samples_split` - Very dependant on values of other hyperparameters. The best models used higher values for this hyperparameter (e.g. 20).
 * `max_features` - Using all features correlates with poor classifier performance. `log2` or `sqrt` greatly preferred.
+
+* **Accuracy:** 86.957%
+* **Precision:** 87.234%
+* **Recall:** 77.358%

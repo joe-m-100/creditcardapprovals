@@ -1,3 +1,4 @@
+import time
 import pandas as pd
 from data_extractor import DataExtractor
 from model import create_model, search
@@ -26,11 +27,11 @@ def setup() -> pd.DataFrame:
 
 def param_search(dataset: pd.DataFrame, search_type: str):
     distributions = {
-        'n_estimators': [200, 500, 800],
-        'max_depth': [5, 10, 20],
-        'min_samples_leaf': [2, 5, 10],
-        'min_samples_split': [2, 5, 10, 20],
-        'max_features': ['sqrt', 'log2', None]
+        'n_estimators': [200, 300, 400],
+        'max_depth': [4],
+        'min_samples_leaf': [1, 2, 3],
+        'min_samples_split': [25, 30, 35],
+        'max_features': ['sqrt']
     }
 
     if search_type == 'randomized':
@@ -46,7 +47,6 @@ def param_search(dataset: pd.DataFrame, search_type: str):
             dataset=dataset,
             type='grid',
             param_distributions=distributions,
-            iterations=200,
             k_folds=10
         )
 
@@ -56,7 +56,13 @@ def run(dataset: pd.DataFrame):
 
 
 if __name__ == '__main__':
+    start_time = time.time()
+
     data = setup()
 
-    # Main Program
-    param_search(data, 'grid')
+    # param_search(data, 'grid')
+    run(data)
+
+    # Display runtime
+    time_elapsed = time.time() - start_time
+    print(f'Runtime: {time_elapsed // 60} mins {round(time_elapsed % 60, 2)} secs')

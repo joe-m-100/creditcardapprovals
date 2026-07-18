@@ -12,10 +12,12 @@ def create_model(dataset: pd.DataFrame) -> None:
 
     # Create Random Forest Classifier
     rfclassifier = RandomForestClassifier(
-        n_estimators=500,
-        random_state=15, 
+        n_estimators=300,
+        random_state=15,
+        min_samples_split=25,
         min_samples_leaf=2,
-        max_depth=4
+        max_depth=4,
+        max_features='sqrt',
     )
 
     rfclassifier.fit(X_train, y_train)
@@ -63,8 +65,6 @@ def search(dataset: pd.DataFrame, type: str, param_distributions: dict, k_folds:
         return None
 
     search.fit(X_train, y_train)
-
-    print('\nBest Parameters:\n', search.best_params_)
 
     results_df = pd.DataFrame(search.cv_results_)
 
